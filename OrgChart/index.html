@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Organization Chart</title>
+
+<!-- CSS Files -->
+<link type="text/css" href="./base.css" rel="stylesheet" />
+<link type="text/css" href="./Spacetree.css" rel="stylesheet" />
+
+<!--[if IE]>
+<script language="javascript" type="text/javascript" src="./excanvas.compiled.js"></script>
+<![endif]-->
+
+<!-- JIT Library File -->
+<script language="javascript" type="text/javascript" src="./jit-yc.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script language="javascript" type="text/javascript" src="./visual.js"></script>
+
+<script language="javascript" type="text/javascript">
+
+var jsonurl = "http://webserver/OrgChart/json.json"; <!-- Path to the JSON file -->
+    $.ajax({
+                url  : jsonurl,
+                type : "GET",
+                success: function(data) {
+                        jsonStr = $.parseJSON(data);
+                        init(jsonStr); //this line will call init function with JSON loaded after this call
+                },
+                error:function (xhr, ajaxOptions, thrownError){
+                    alert("Status error: " +xhr.status);
+                    alert("Error message: " +thrownError);
+                }
+});   
+
+</script>
+  
+</head>
+
+<div id="center-container">
+    <div id="infovis"></div>    
+</div>
+
+<div id="right-container">
+<center>
+<h3>
+Welcome to the Interactive Organizational Chart.  Click the nodes to explore the hierarchy of our organization!"
+</h3>
+
+</center>
+</div>
+
+<div id="log"></div>
+</div>
+</body>
+</html>
